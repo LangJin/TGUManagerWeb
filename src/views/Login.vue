@@ -17,7 +17,7 @@ export default {
         login:function(){
             let userinfo = {"username":this.username,"password":this.password}
             this.$http.login(userinfo)
-            this.$rooter.push("/home")
+            this.$router.push("/home")
         }
     }
 }

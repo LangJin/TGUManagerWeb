@@ -3,13 +3,24 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   routes: [
 
     {
       path: '/',
-      component: () => import( '../views/Home.vue')
+      redirect:"/home",
+      children:[
+        {
+          path:"/home",
+          component: () => import( '../views/Home.vue'),
+          name:"Home",
+          meta:{
+            requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
+            title:"主页"
+          }
+        }
+    ]
     },
     {
       path: '/login',
@@ -25,3 +36,21 @@ export default new Router({
     }
   ]
 });
+
+//路由拦截器
+router.beforeEach((to, from, next) => {
+  　　//根据字段判断是否路由过滤
+  　　if(to.meta.requireAuth) { // 判断该路由是否需要登录权限
+  　　　　if(localStorage.getItem('token')) { //身份信息获取
+  　　　　　　next();
+  　　　　} else {
+  　　　　　　next({
+  　　　　　　　　path: '/login'
+  　　　　　　})
+  　　　　}
+  　　} else {
+  　　　　next();
+  　　}
+  });
+
+export default router;

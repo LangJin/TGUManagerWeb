@@ -16,7 +16,8 @@ export default {
     methods:{
         login:function(){
             let userinfo = {"username":this.username,"password":this.password}
-            this.$ajax.post("/manage/login",userinfo)
+            this.$http.login(userinfo)
+            this.$rooter.push("/home")
         }
     }
 }

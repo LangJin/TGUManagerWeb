@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import request from './utils/request'
+import api from './api'
 
-Vue.prototype.$ajax = request
 
+
+
+Vue.prototype.$http = api
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -19,10 +19,4 @@ export function isCookie(key){
     return VueCookies.isKey(key)
 
 }
-export default {
-    setCookie,
-    getCookie,
-    delCookie,
-    isCookie
-}
 

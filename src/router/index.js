@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import isCookie from '../utils/cookie'
+import {isCookie} from '../utils/cookie'
 
 Vue.use(Router)
 
@@ -49,9 +49,20 @@ router.beforeEach((to, from, next) => {
   　　　　　　　　path: '/login'
   　　　　　　})
   　　　　}
-  　　} else {
-  　　　　next();
-  　　}
-  });
+  　　}else {
+      　　　　next();
+      　　}
+  
+      /* 如果本地存在token,则不允许直接跳转到登录页面 */
+      if (to.fullPath === '/login') {
+        if (isCookie('token')) {
+          next({
+            path: from.fullPath
+          })
+        } else {
+          next()
+        }
+}});
+      
 
 export default router;

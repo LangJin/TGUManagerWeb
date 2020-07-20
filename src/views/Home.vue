@@ -1,11 +1,12 @@
 <template>
   <div>
-      测试主页222
-
+      主页
   </div>
 </template>
 
 
-<style>
+<style scoped>
 
-</style>
+</style>>
+
+

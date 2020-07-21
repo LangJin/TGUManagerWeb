@@ -7,22 +7,20 @@ Vue.use(Router)
 const router =  new Router({
   mode: 'history',
   routes: [
-
     {
       path: '/',
-      redirect:"/home",
-      children:[
-        {
+      component: () => import('../layout/Frame.vue'),
+      meta: { title: '自述文件' },
+      children:[{
           path:"/home",
-          component: () => import( '../views/Home.vue'),
+          component: () => import( '../views/Dashboard.vue'),
           name:"Home",
           meta:{
             requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
             title:"主页"
           }
         }
-    ]
-    },
+    ]},
     {
       path: '/login',
       component: () => import('../views/Login.vue'),
@@ -40,6 +38,7 @@ const router =  new Router({
 
 //路由拦截器
 router.beforeEach((to, from, next) => {
+      document.title = `${to.meta.title} | 后台管理系统`;
   　　//根据字段判断是否路由过滤
   　　if(to.meta.requireAuth) { // 判断该路由是否需要登录权限
   　　　　if(isCookie('token')) { //身份信息获取

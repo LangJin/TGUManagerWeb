@@ -1,11 +1,6 @@
 <template>
-  <div>
-    首页数据
-  </div>
+<div>
+    Dashboard
+</div>
+    
 </template>
-
-<script>
-
-export default {
-}
-</script>

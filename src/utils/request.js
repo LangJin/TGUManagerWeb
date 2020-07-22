@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // 创建axios实例
 const httpService = axios.create({
-    baseURL: "http://192.168.4.115:8888", // url前缀
+    baseURL: "http://127.0.0.1:8888", // url前缀
     timeout: 3000 // 请求超时时间
 });
 

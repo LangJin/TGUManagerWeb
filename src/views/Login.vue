@@ -46,7 +46,7 @@
                 this.$http.login(userinfo).then(res =>{
                     console.log(res)
                     setCookie("token",res.data.token)
-                    this.$router.push("/home")
+                    this.$router.push("/")
                     this.$message({
                         message:"登陆成功！",
                         type:"success"

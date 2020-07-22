@@ -7,20 +7,26 @@ Vue.use(Router)
 const router =  new Router({
   mode: 'history',
   routes: [
+    // {
+    //   path:'/',
+    //   meta:{title:"首页",requireAuth:true}
+    // },
     {
       path: '/',
-      component: () => import('../layout/Frame.vue'),
-      meta: { title: '自述文件' },
-      children:[{
-          path:"/home",
+      component: () => import('../components/layout/Home.vue'),
+      meta: { title: '主页' ,requireAuth:true},
+      children:[
+        {
+          path:"/dashboard",
           component: () => import( '../views/Dashboard.vue'),
-          name:"Home",
+          name:"Dashboard",
           meta:{
             requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
             title:"主页"
           }
         }
-    ]},
+      ]
+    },
     {
       path: '/login',
       component: () => import('../views/Login.vue'),

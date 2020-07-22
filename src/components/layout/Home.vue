@@ -1,20 +1,35 @@
 <template>
-  <div>
-      <el-container>
-        <el-header>头</el-header>
-        <el-container>
-            <el-aside width="200px">导航</el-aside>
-            <el-main>Main</el-main>
-        </el-container>
-        </el-container>
-  </div>
-
-
+    <el-container>
+    <el-header>
+        <v-header></v-header>
+    </el-header>
+    
+    <el-container>
+        <el-aside width="200px">
+            <v-aside></v-aside>
+        </el-aside>
+        
+        <el-main>
+            <router-view></router-view>
+        </el-main>
+    </el-container>
+    </el-container>
 </template>
 
 <script>
-
+import VHeader from './Header.vue'
+import VAside from './Aside.vue'
+export default {
+    data() {
+        return {}
+    },
+    components:{
+        VHeader,
+        VAside
+    }
+}
 </script>
+
 
 
 <style scoped>

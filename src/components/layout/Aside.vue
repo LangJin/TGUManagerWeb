@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <ul>
-            <li>首页</li>
-        </ul>
-    </div>
+<div>111</div>
 </template>
 
+<style>
+
+</style>
 
 <script>
-export default {
-    
-}
+  export default {
+    data() {}
+    }
 </script>

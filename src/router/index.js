@@ -24,6 +24,33 @@ const router =  new Router({
             requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
             title:"主页"
           }
+        },
+        {
+          path:"/a",
+          component: () => import( '../views/A.vue'),
+          name:"A",
+          meta:{
+            requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
+            title:"A"
+          }
+        },
+        {
+          path:"/b",
+          component: () => import( '../views/B.vue'),
+          name:"B",
+          meta:{
+            requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
+            title:"B"
+          }
+        },
+        {
+          path:"/c",
+          component: () => import( '../views/C.vue'),
+          name:"C",
+          meta:{
+            requireAuth:true,  //添加该字段，表示进入这个路由是需要登录的
+            title:"C"
+          }
         }
       ]
     },
@@ -69,5 +96,10 @@ router.beforeEach((to, from, next) => {
         }
 }});
       
+// https://www.jianshu.com/p/6fbb009c45c4
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 export default router;
